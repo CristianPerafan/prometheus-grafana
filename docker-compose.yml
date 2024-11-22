@@ -14,7 +14,9 @@ services:
         image: grafana/promtail:master
         volumes:
             - /var/log:/var/log
-        command: -config.file=/etc/promtail/docker-config.yaml
+            - ./promtail:/etc/promtail
+
+        command: -config.file=/etc/promtail/promtail-config.yml
         networks:
             - promtail-loki
 
