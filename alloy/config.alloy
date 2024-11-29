@@ -1,0 +1,17 @@
+prometheus.scrape "ws_server_springboot" {
+  targets = [{
+    __address__ = "host.docker.internal:9092",
+  }]
+
+  forward_to = [prometheus.remote_write.prometheus.receiver]
+}
+prometheus.remote_write "prometheus" {
+    endpoint {
+        url = "http://prometheus:9090/api/v1/write"
+
+        // basic_auth {
+        //   username = "admin"
+        //   password = "admin"
+        // }
+    }
+}

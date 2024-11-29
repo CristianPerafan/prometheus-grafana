@@ -19,7 +19,7 @@ services:
         command: -config.file=/etc/promtail/promtail-config.yml
         networks:
             - promtail-loki
-
+        
     cadvisor:
         image: google/cadvisor:v0.33.0
         volumes:
@@ -32,7 +32,7 @@ services:
             - prometheus-cadvisor
 
     prometheus:
-        image: prom/prometheus:v2.7.1
+        image: prom/prometheus:latest
         ports:
             - "9090:9090"
         volumes:
@@ -46,6 +46,9 @@ services:
             --storage.tsdb.path=/prometheus
             --web.console.libraries=/usr/share/prometheus/console_libraries
             --web.console.templates=/usr/share/prometheus/consoles
+            --web.enable-remote-write-receiver
+            --enable-feature=remote-write-receiver
+            --log.level=debug
 
     grafana:
         depends_on:
@@ -63,6 +66,24 @@ services:
             - world
             - grafana-loki
             - grafana-prometheus
+
+    alloy:
+        image: grafana/alloy:latest
+        ports:
+            - "12345:12345"
+        volumes:
+            - "./alloy/config.alloy:/etc/alloy/config.alloy"  # Mapea el archivo de configuración
+            - "/var/lib/alloy/data"  # Si necesitas persistir datos, asegúrate de mapear el volumen adecuado
+        command: [
+            "run",
+            "--server.http.listen-addr=0.0.0.0:12345",
+            "--storage.path=/var/lib/alloy/data",  # Asegúrate de incluir la ruta de almacenamiento
+            "/etc/alloy/config.alloy"
+        ]
+        networks:
+            - grafana-loki
+            - grafana-prometheus
+            - world
 
 networks:
     world:
