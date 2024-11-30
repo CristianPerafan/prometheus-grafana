@@ -1,11 +1,15 @@
-prometheus.scrape "ws_server_springboot" {
+discovery.relabel "metrics_integrations_integrations_spring_boot" {
   targets = [{
-    __address__ = "host.docker.internal:9092",
+    __address__ = "alloy:1235",
   }]
 
-  forward_to = [prometheus.remote_write.prometheus.receiver]
+  rule {
+    target_label = "instance"
+    replacement  = constants.hostname
+  }
 }
-prometheus.remote_write "prometheus" {
+
+prometheus.remote_write "metrics_service" {
     endpoint {
         url = "http://prometheus:9090/api/v1/write"
 
@@ -15,3 +19,20 @@ prometheus.remote_write "prometheus" {
         // }
     }
 }
+prometheus.scrape "metrics_integrations_integrations_spring_boot" {
+  targets      = discovery.relabel.metrics_integrations_integrations_spring_boot.output
+  forward_to   = [prometheus.remote_write.metrics_service.receiver]
+  job_name     = "spring-boot-app"
+  metrics_path = "/outcurrapi/actuator/prometheus"
+}
+
+  loki.write "grafana_loki" {
+    endpoint {
+      url = "http://loki:3100/loki/api/v1/push"
+
+      // basic_auth {
+      //  username = "admin"
+      //  password = "admin"
+      // }
+    }
+  }
