@@ -16,7 +16,7 @@
       {
         "datasource": {
           "type": "prometheus",
-          "uid": "de5goe3x5vzswe"
+          "name": "Prometheus"
         },
         "enable": true,
         "expr": "resets(process_uptime_seconds{application=\"$application\", region=\"$region\", instance=\"$instance\"}[1m]) > 0",
@@ -46,7 +46,7 @@
       "collapsed": false,
       "datasource": {
         "type": "loki",
-        "uid": "de5glccyz9y4gc"
+        "name": "Loki"
       },
       "gridPos": {
         "h": 1,
@@ -60,7 +60,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "de5glccyz9y4gc"
+            "name": "Loki"
           },
           "refId": "A"
         }
@@ -71,7 +71,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "de5goe3x5vzswe"
+        "name": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -135,7 +135,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "jdbc_connections_min{application=\"$application\", region=~\"$region\", instance=~\"$instance\", name=~\"$jdbc_connection_name\"}",
           "format": "time_series",
@@ -149,7 +149,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "de5goe3x5vzswe"
+        "name": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -214,7 +214,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "jdbc_connections_active{application=\"$application\", region=~\"$region\", instance=~\"$instance\", name=~\"$jdbc_connection_name\"}",
           "format": "time_series",
@@ -228,7 +228,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "de5goe3x5vzswe"
+        "name": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -292,7 +292,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "jdbc_connections_max{application=\"$application\", region=~\"$region\", instance=~\"$instance\", name=~\"$jdbc_connection_name\"}",
           "format": "time_series",
@@ -307,7 +307,7 @@
       "collapsed": false,
       "datasource": {
         "type": "loki",
-        "uid": "de5glccyz9y4gc"
+        "name": "Loki"
       },
       "gridPos": {
         "h": 1,
@@ -321,7 +321,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "de5glccyz9y4gc"
+            "name": "Loki"
           },
           "refId": "A"
         }
@@ -336,7 +336,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "de5goe3x5vzswe"
+        "name": "Prometheus"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -377,7 +377,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "hikaricp_connections_active{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}",
           "format": "time_series",
@@ -388,7 +388,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "hikaricp_connections_idle{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}",
           "format": "time_series",
@@ -399,7 +399,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "hikaricp_connections_pending{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}",
           "format": "time_series",
@@ -442,7 +442,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "de5goe3x5vzswe"
+        "name": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -506,7 +506,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "hikaricp_connections_max{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}",
           "format": "time_series",
@@ -520,7 +520,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "de5goe3x5vzswe"
+        "name": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -584,7 +584,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "hikaricp_connections_min{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}",
           "format": "time_series",
@@ -598,7 +598,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "de5goe3x5vzswe"
+        "name": "Prometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -662,7 +662,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "hikaricp_connections_timeout_total{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}",
           "format": "time_series",
@@ -681,7 +681,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "de5goe3x5vzswe"
+        "name": "Prometheus"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -725,7 +725,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "irate(hikaricp_connections_usage_seconds_sum{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}[5m]) / irate(hikaricp_connections_usage_seconds_count{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}[5m])",
           "format": "time_series",
@@ -736,7 +736,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "irate(hikaricp_connections_creation_seconds_sum{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}[5m]) / irate(hikaricp_connections_creation_seconds_count{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}[5m])",
           "format": "time_series",
@@ -747,7 +747,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "expr": "irate(hikaricp_connections_acquire_seconds_sum{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}[5m]) / irate(hikaricp_connections_acquire_seconds_count{application=\"$application\", region=~\"$region\", instance=~\"$instance\", pool=~\"$hikaricp_pool_name\"}[5m])",
           "format": "time_series",
@@ -808,7 +808,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "de5goe3x5vzswe"
+          "name": "Prometheus"
         },
         "definition": "",
         "hide": 0,
@@ -835,7 +835,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "de5goe3x5vzswe"
+          "name": "Prometheus"
         },
         "definition": "",
         "hide": 0,
@@ -862,7 +862,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "de5goe3x5vzswe"
+          "name": "Prometheus"
         },
         "definition": "label_values(jdbc_connections_min{application=\"$application\", region=~\"$region\"}, instance)",
         "hide": 0,
@@ -889,7 +889,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "de5goe3x5vzswe"
+          "name": "Prometheus"
         },
         "definition": "label_values(jdbc_connections_min{application=\"$application\", region=~\"$region\", instance=~\"$instance\"}, name)",
         "hide": 0,
@@ -916,7 +916,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "de5goe3x5vzswe"
+          "name": "Prometheus"
         },
         "definition": "label_values(hikaricp_connections_min{application=\"$application\", region=~\"$region\", instance=~\"$instance\"}, pool)",
         "hide": 0,

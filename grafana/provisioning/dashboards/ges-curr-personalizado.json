@@ -5,7 +5,7 @@
         "builtIn": 1,
         "datasource": {
           "type": "grafana",
-          "uid": "-- Grafana --"
+          "name": "Grafana"
         },
         "enable": true,
         "hide": true,
@@ -36,8 +36,8 @@
     },
     {
       "datasource": {
-        "type": "datasource",
-        "uid": "-- Mixed --"
+        "type": "prometheus",
+        "name": "Prometheus"
       },
       "description": "",
       "fieldConfig": {
@@ -155,7 +155,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
+            "name": "Prometheus"
           },
           "editorMode": "code",
           "expr": "sum(rate(http_server_requests_seconds_count[30m]))",
@@ -169,84 +169,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus",
-        "uid": "de5goe3x5vzswe"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 12,
-        "w": 11,
-        "x": 12,
-        "y": 1
-      },
-      "id": 9,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "10.4.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
-          },
-          "editorMode": "code",
-          "expr": "sum(\r\n  increase(\r\n    http_server_requests_seconds_count{\r\n      status=\"200\", \r\n      instance=\"host.docker.internal:9092\"    \r\n    }[5m]\r\n  )\r\n)",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "OK (200) Requests",
-      "type": "stat"
-    },
-    {
-      "collapsed": false,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 13
-      },
-      "id": 5,
-      "panels": [],
-      "title": "Logs",
-      "type": "row"
-    },
-    {
-      "datasource": {
         "type": "loki",
-        "uid": "de5glccyz9y4gc"
+        "name": "Loki"
       },
       "fieldConfig": {
         "defaults": {
@@ -297,7 +221,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "de5glccyz9y4gc"
+            "name": "Loki"
           },
           "editorMode": "code",
           "expr": "count_over_time({app=\"demo_logs\", level=\"WARN\"}[1h])",
@@ -311,7 +235,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "de5glccyz9y4gc"
+        "name": "Loki"
       },
       "fieldConfig": {
         "defaults": {
@@ -358,7 +282,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "de5glccyz9y4gc"
+            "name": "Loki"
           },
           "editorMode": "code",
           "expr": "count_over_time({app=\"demo_logs\", level=\"INFO\"}[1h])",
@@ -368,76 +292,6 @@
       ],
       "title": "N. of Info Logs",
       "type": "gauge"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "de5goe3x5vzswe"
-      },
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 7,
-        "w": 7,
-        "x": 0,
-        "y": 19
-      },
-      "id": 2,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "10.4.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "de5goe3x5vzswe"
-          },
-          "editorMode": "code",
-          "expr": "number_of_faculties_created_total{application=\"outcome-curr-mgmnt\",method=\"createFaculty\",instance=\"host.docker.internal:9092\",}",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Number of Faculties Created",
-      "type": "stat"
     }
   ],
   "refresh": "",
