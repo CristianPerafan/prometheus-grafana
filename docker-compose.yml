@@ -77,12 +77,12 @@ services:
         ports:
             - "12345:12345"
         volumes:
-            - "./alloy/config.alloy:/etc/alloy/config.alloy"  # Mapea el archivo de configuración
-            - "/var/lib/alloy/data"  # Si necesitas persistir datos, asegúrate de mapear el volumen adecuado
+            - "./alloy/config.alloy:/etc/alloy/config.alloy" 
+            - "/var/lib/alloy/data" 
         command: [
             "run",
             "--server.http.listen-addr=0.0.0.0:12345",
-            "--storage.path=/var/lib/alloy/data",  # Asegúrate de incluir la ruta de almacenamiento
+            "--storage.path=/var/lib/alloy/data", 
             "/etc/alloy/config.alloy"
         ]
         networks:
