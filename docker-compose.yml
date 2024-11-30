@@ -20,22 +20,10 @@ services:
         volumes:
             - /var/log:/var/log
             - ./promtail:/etc/promtail
-
         command: -config.file=/etc/promtail/promtail-config.yml
         networks:
             - promtail-loki
         
-    cadvisor:
-        image: google/cadvisor:v0.33.0
-        volumes:
-            - /:/rootfs:ro
-            - /var/run:/var/run:ro
-            - /sys:/sys:ro
-            - /var/lib/docker/:/var/lib/docker:ro
-            - /dev/disk/:/dev/disk:ro
-        networks:
-            - prometheus-cadvisor
-
     prometheus:
         image: prom/prometheus:latest
         ports:
@@ -44,7 +32,6 @@ services:
             - ./prometheus:/app.cfg
         networks:
             - world
-            - prometheus-cadvisor
             - grafana-prometheus
         command: >-
             --config.file=/app.cfg/prometheus.yml
@@ -97,6 +84,4 @@ networks:
     grafana-loki:
         internal: true
     grafana-prometheus:
-        internal: true
-    prometheus-cadvisor:
         internal: true
