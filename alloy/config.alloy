@@ -1,6 +1,6 @@
 discovery.relabel "metrics_integrations_integrations_spring_boot" {
   targets = [{
-    __address__ = "alloy:1235",
+    __address__ = "host.docker.internal:9092",
   }]
 
   rule {
@@ -29,10 +29,5 @@ prometheus.scrape "metrics_integrations_integrations_spring_boot" {
   loki.write "grafana_loki" {
     endpoint {
       url = "http://loki:3100/loki/api/v1/push"
-
-      // basic_auth {
-      //  username = "admin"
-      //  password = "admin"
-      // }
     }
   }
