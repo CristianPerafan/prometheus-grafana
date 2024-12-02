@@ -1,0 +1,50 @@
+pipeline {
+    agent { label 'test-node' }
+    
+    triggers {
+        cron('H/10 * * * *') 
+    }
+
+    options {
+        disableConcurrentBuilds() 
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/CristianPerafan/outcome-curr-mgmnt-backend-v2.git', 
+                    branch: 'main',
+                    credentialsId: 'github-credentials'
+            }
+        }
+        stage('Running Smoke Test') {
+            steps {
+                script {
+                    // Configurar la URL del servicio mediante una variable de entorno
+                    withEnv(['BASE_URL=http://localhost:9092']) {
+                        bat "mvn -pl outcome-curr-mgmt-system-tests -Dtest=TestMetricsSmokeIT -Dservice.url=$BASE_URL test"
+                    }
+                }
+            }
+        }
+        stage('Running Unit Test') {
+            steps {
+                script {
+                    bat "mvn -pl outcome-curr-mgmt test"
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            junit '**/target/surefire-reports/*.xml' 
+        }
+        failure {
+            echo "Tests failed. Please check the reports and logs for more details."
+        }
+        success {
+            echo "All tests passed successfully."
+        }
+    }
+}
