@@ -4,10 +4,12 @@ global:
 
 alerting:
   alertmanagers:
-  - static_configs:
-    - targets:
+    - static_configs:
+        - targets:
+          - 'alertmanager:9093'
 
 rule_files:
+  - "alert.rules.yml"
 
 scrape_configs:
   - job_name: 'cadvisor'
@@ -17,3 +19,4 @@ scrape_configs:
     metrics_path: '/outcurrapi/actuator/prometheus'
     static_configs:
       - targets: ['host.docker.internal:9092']
+

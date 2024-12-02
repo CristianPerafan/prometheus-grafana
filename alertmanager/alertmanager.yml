@@ -1,0 +1,18 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 3h
+  receiver: 'email-config'
+
+receivers:
+  - name: 'email-config'
+    email_configs:
+      - to: 'davidcraftgl@gmail.com'
+        from: 'MS_9zNASI@trial-3yxj6lj0kx14do2r.mlsender.net'
+        smarthost: 'smtp.mailersend.net:587'
+        auth_username: 'MS_9zNASI@trial-3yxj6lj0kx14do2r.mlsender.net'
+        auth_password: 'zvXecKfrgNX8hJ1y'

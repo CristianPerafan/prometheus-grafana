@@ -1,0 +1,56 @@
+groups:
+  - name: spring_boot_alerts
+    rules:
+      - alert: HighMemoryUsage
+        expr: jvm_memory_used_bytes{job="spring-boot-app", area="heap"} > 0
+        for: 20s
+        labels:
+          severity: critical
+        annotations:
+          summary: "Memory usage is too high in Spring Boot app"
+          description: "The memory usage of the Spring Boot application is over 1GB."
+
+      - alert: HighCpuUsage
+        expr: rate(process_cpu_seconds_total{job="spring-boot-app"}[1m]) > 0.9
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High CPU usage in Spring Boot app"
+          description: "The CPU usage of the Spring Boot application is over 90%."
+
+      - alert: SpringBootAppDown
+        expr: up{job="spring-boot-app"} == 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Spring Boot application is down"
+          description: "The Spring Boot application is not responding to Prometheus scrape requests."
+
+      - alert: HighGcPause
+        expr: rate(jvm_gc_pause_seconds_total{job="spring-boot-app"}[5m]) > 10
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High GC pause time in Spring Boot app"
+          description: "The garbage collection pause time is over 10 seconds."
+
+      - alert: SlowApiResponse
+        expr: http_server_requests_seconds_sum{job="spring-boot-app", status="200"} / http_server_requests_seconds_count{job="spring-boot-app", status="200"} > 2
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Slow API response in Spring Boot app"
+          description: "The API response time for the Spring Boot application is over 2 seconds."
+
+      - alert: LowDatabaseConnections
+        expr: jdbc_connections{job="spring-boot-app"} < 5
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Low database connections"
+          description: "The number of active database connections is below 5."
